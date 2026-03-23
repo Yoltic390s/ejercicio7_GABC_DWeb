@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de Materias</title>
+</head>
+<body class="container mt-5">
+
+<h1 class="mb-4">Listado de Materias</h1>
+<h3>Gabriel Alejandro Becerril Cabral 4CM1</h3>
+<a th:href="@{/materias/nueva}" class="btn btn-primary mb-3">Crear Nueva Materia</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Creditos</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="materia : ${materias}">
+        <td th:text="${materia.id}">1</td>
+        <td th:text="${materia.nombre}">Matemáticas</td>
+        <td th:text="${materia.creditos}">4</td>
+        <td>
+            <a th:href="@{/materias/editar/{id}(id=${materia.id})}" class="btn btn-warning btn-sm">Editar</a>
+            <a th:href="@{/materias/eliminar/{id}(id=${materia.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(materias)}">
+        <td colspan="4" class="text-center">No hay materias registradas.</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

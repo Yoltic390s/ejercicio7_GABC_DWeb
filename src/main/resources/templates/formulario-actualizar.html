@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Materia</title>
+</head>
+<body class="container mt-5">
+
+<h1 class="mb-4">Editar Materia</h1>
+
+<form th:action="@{/materias/actualizar/{id}(id=${materiaDTO.id})}" th:object="${materiaDTO}" method="post" class="w-50">
+
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre de la Materia:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="creditos" class="form-label">Creditos:</label>
+        <input type="number" id="creditos" th:field="*{creditos}" class="form-control" required min="1">
+    </div>
+
+    <button type="submit" class="btn btn-warning">Actualizar</button>
+    <a th:href="@{/materias}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+</body>
+</html>

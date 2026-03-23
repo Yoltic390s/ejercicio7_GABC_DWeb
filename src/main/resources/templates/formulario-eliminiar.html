@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmar Eliminacion</title>
+</head>
+<body class="container mt-5">
+
+<div class="card border-danger w-50">
+    <div class="card-header bg-danger text-white">
+        <h4>Confirmar Eliminacion</h4>
+    </div>
+    <div class="card-body">
+        <p>¿Estas completamente seguro de que deseas eliminar la siguiente materia?</p>
+
+        <ul class="list-group mb-4">
+            <li class="list-group-item"><strong>ID:</strong> <span th:text="${materia.id}"></span></li>
+            <li class="list-group-item"><strong>Nombre:</strong> <span th:text="${materia.nombre}"></span></li>
+            <li class="list-group-item"><strong>Creditos:</strong> <span th:text="${materia.creditos}"></span></li>
+        </ul>
+
+        <form th:action="@{/materias/borrar/{id}(id=${materia.id})}" method="post" class="d-inline">
+            <button type="submit" class="btn btn-danger">Si, Eliminar de forma permanente</button>
+        </form>
+        <a th:href="@{/materias}" class="btn btn-secondary ms-2">Cancelar</a>
+    </div>
+</div>
+
+</body>
+</html>
